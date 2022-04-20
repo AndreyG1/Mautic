@@ -1,0 +1,68 @@
+definitions:
+  queryToken:
+    name: token
+    in: query
+    description: social id token
+    type: string
+    required: true
+  queryRole:
+    name: role
+    in: query
+    type: number
+    default: '1'
+  queryDeviceToken:
+    name: device_token
+    description: token for push notifications
+    in: query
+    type: string
+#  /auth/google
+#  auth/google/authenticated
+#    auth/google/mobile
+
+paths:
+  /auth/google:
+    get:
+      tags: [auth]
+      description: Login via social from web
+      produces: [application/json]
+      responses: [200]
+
+  /auth/google/authenticated:
+    get:
+      tags: [auth]
+      description: Confirm web auth
+      produces: [application/json]
+      responses: [200]
+
+  /auth/google/mobile:
+    get:
+      tags: [auth]
+      description: Login via social from web
+      produces: [application/json]
+      parameters:
+        - name: token
+          in: query
+          description: social id token
+          type: string
+          required: true
+        - name: role
+          in: query
+          type: number
+          default: '1'
+        - name: device_token
+          description: token for push notifications
+          in: query
+          type: string
+      responses: [200]
+
+  /auth/apple/mobile:
+    get:
+      tags: [auth]
+      description: Login via apple
+      produces: [application/json]
+      parameters:
+        - $ref: '#/definitions/queryToken'
+        - $ref: '#/definitions/queryRole'
+        - name: device_token
+          allOf: [$ref: '#/definitions/queryDeviceToken', required: true]
+      responses: [200]

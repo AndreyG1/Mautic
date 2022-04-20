@@ -1,0 +1,94 @@
+definitions:
+  id:
+    name: id
+    in: path
+    type: number
+    required: true
+  status:
+    name: status
+    in: formData
+    type: number
+    enum: ['1', '2', '5']
+  title:
+    name: title
+    in: formData
+    type: string
+  body:
+    name: body
+    in: formData
+    type: string
+
+paths:
+  /api/v1/admin/agreements:
+    get:
+      security: [bearerAuth: []]
+      tags: [admin-agreement]
+      description: Get list of agreement
+      produces: [application/json]
+      responses: [200]
+
+    post:
+      security: [bearerAuth: []]
+      tags: [admin-agreement]
+      produces: [application/json]
+      parameters:
+        - $ref: '#/definitions/title'
+        - $ref: '#/definitions/body'
+      responses: [200]
+
+  /api/v1/admin/agreements/{id}:
+    put:
+      security: [bearerAuth: []]
+      tags: [admin-agreement]
+      produces: [application/json]
+      parameters:
+        - $ref: '#/definitions/id'
+        - $ref: '#/definitions/title'
+        - $ref: '#/definitions/body'
+        - $ref: '#/definitions/status'
+      responses: [200]
+
+    delete:
+      security: [bearerAuth: []]
+      tags: [admin-agreement]
+      produces: [application/json]
+      parameters:
+        - $ref: '#/definitions/id'
+      responses: [200]
+
+  /api/v1/admin/terms:
+    get:
+      security: [bearerAuth: []]
+      tags: [admin-term]
+      description: Get list of terms
+      produces: [application/json]
+      responses: [200]
+
+    post:
+      security: [bearerAuth: []]
+      tags: [admin-term]
+      produces: [application/json]
+      parameters:
+        - $ref: '#/definitions/title'
+        - $ref: '#/definitions/body'
+      responses: [200]
+
+  /api/v1/admin/terms/{id}:
+    put:
+      security: [bearerAuth: []]
+      tags: [admin-term]
+      produces: [application/json]
+      parameters:
+        - $ref: '#/definitions/id'
+        - $ref: '#/definitions/title'
+        - $ref: '#/definitions/body'
+        - $ref: '#/definitions/status'
+      responses: [200]
+
+    delete:
+      security: [bearerAuth: []]
+      tags: [admin-term]
+      produces: [application/json]
+      parameters:
+        - $ref: '#/definitions/id'
+      responses: [200]

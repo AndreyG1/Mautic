@@ -1,0 +1,240 @@
+definitions:
+  estateId:
+    name: estate_id
+    in: formData
+    type: number
+    required: true
+  estateIdOrder:
+    name: estate_id
+    in: formData
+    type: number
+  userIdOrder:
+    name: user_id
+    in: formData
+    type: number
+  position:
+    name: position
+    in: formData
+    type: number
+    required: true
+  estateIdQuery:
+    name: estate_id
+    in: query
+    type: number
+    required: true
+  estateIdPath:
+    name: estate_id
+    in: path
+    type: number
+    required: true
+  tenantId:
+    name: tenant_id
+    in: formData
+    type: number
+    required: true    
+  userId:
+    name: user_id
+    in: formData
+    type: number
+    required: true
+  timeslotDate:
+    name: date
+    in: formData
+    type: string
+    pattern: '^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}$'
+    example: '2021-21-21 23:00'
+    required: true
+  tenantCode:
+    name: code
+    in: formData
+    type: string
+    pattern: '^[a-f\d]{32}$'
+    example: '1234567890abcdef1234567890abcdef'
+    required: true
+  landlord_match_filters:
+    name: filters
+    in: query
+    schema:
+      type: json
+      items:
+        - name: knock
+          type: boolean
+        - name: buddy
+          type: boolean
+        - name: invite
+          type: boolean
+        - name: visit
+          type: boolean
+        - name: top
+          type: boolean
+        - name: commit
+          type: boolean
+    example: '{ "knock": true, "buddy": false, "invite": false, "visit": false, "top": false, "commit": false }'
+  tenant_match_filters:
+    name: filters
+    in: query
+    schema:
+      type: json
+      items:
+        - name: buddy
+          type: boolean
+        - name: dislike
+          type: boolean
+        - name: like
+          type: boolean
+        - name: knock
+          type: boolean
+        - name: invite
+          type: boolean
+        - name: share
+          type: boolean
+        - name: top
+          type: boolean
+        - name: commit
+          type: boolean
+    example: '{ "buddy": true, "like": false, "dislike": false, "knock": false, "invite": false, "share": false, "top": false, "commit": false }'
+
+# Routes list
+/api/v1/match/tenant:
+  get:
+    tags: [match]
+    security: [bearerAuth: []]
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/tenant_match_filters'
+      - $ref: '#/definitions/limit'
+      - $ref: '#/definitions/page'
+    responses: [200]
+
+/api/v1/match/landlord:
+  get:
+    tags: [match]
+    security: [bearerAuth: []]
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/landlord_match_filters'
+      - $ref: '#/definitions/estateIdQuery'
+      - $ref: '#/definitions/limit'
+      - $ref: '#/definitions/page'
+    responses: [200]
+
+/api/v1/match/knock:
+  post:
+    tags: [match]
+    security: [bearerAuth: []]
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/estateId'
+    responses: [200]
+
+/api/v1/match/invite:
+  post:
+    tags: [match]
+    security: [bearerAuth: []]
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/userId'
+      - $ref: '#/definitions/estateId'
+    responses: [200]
+  delete:
+    tags: [match]
+    security: [bearerAuth: []]
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/userId'
+      - $ref: '#/definitions/estateId'
+    responses: [200]
+
+/api/v1/match/invite/{estate_id}:
+  delete:
+    tags: [match]
+    security: [bearerAuth: []]
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/estateIdPath'
+    responses: [200]
+
+/api/v1/match/visit:
+  post:
+    tags: [match]
+    security: [bearerAuth: []]
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/estateId'
+      - $ref: '#/definitions/timeslotDate'
+    responses: [200]
+
+  delete:
+    tags: [match]
+    security: [bearerAuth: []]
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/estateId'
+    responses: [200]
+
+/api/v1/match/landlordVisit:
+  delete:
+    tags: [match]
+    security: [bearerAuth: []]
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/estateId'
+      - $ref: '#/definitions/tenantId'
+    responses: [200]
+/api/v1/match/share:
+  post:
+    tags: [match]
+    security: [bearerAuth: []]
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/estateId'
+      - $ref: '#/definitions/tenantCode'
+    responses: [200]
+
+/api/v1/match/top:
+  post:
+    tags: [match]
+    security: [bearerAuth: []]
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/userId'
+      - $ref: '#/definitions/estateId'
+    responses: [200]
+  delete:
+    tags: [match]
+    security: [bearerAuth: []]
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/userId'
+      - $ref: '#/definitions/estateId'
+    responses: [200]
+
+/api/v1/match/request:
+  post:
+    tags: [match]
+    security: [bearerAuth: []]
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/userId'
+      - $ref: '#/definitions/estateId'
+    responses: [200]
+
+/api/v1/match/confirm:
+  post:
+    tags: [match]
+    security: [bearerAuth: []]
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/estateId'
+    responses: [200]
+
+/api/v1/match/order:
+  put:
+    tags: [match]
+    security: [bearerAuth: []]
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/estateId'
+      - $ref: '#/definitions/userIdOrder'
+      - $ref: '#/definitions/position'
+    responses: [200]

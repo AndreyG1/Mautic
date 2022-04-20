@@ -1,0 +1,92 @@
+definitions:
+  exclude_from:
+    name: exclude_from
+    in: query
+    type: number
+  exclude_to:
+    name: exclude_to
+    in: query
+    type: number
+  exclude:
+    name: exclude
+    in: query
+    explode: true
+    schema:
+      type: array
+      items:
+        type: number
+
+paths:
+  /api/v1/tenant/estates:
+    get:
+      tags: [estate-tenant]
+      security: [bearerAuth: []]
+      description: Get own estates list
+      produces: [application/json]
+      parameters:
+        - $ref: '#/definitions/exclude_from'
+        - $ref: '#/definitions/exclude_to'
+        - $ref: '#/definitions/exclude'
+        - $ref: '#/definitions/limit'
+      responses: [200]
+
+  /api/v1/tenant/estates/{id}:
+    get:
+      tags: [estate-tenant]
+      security: [bearerAuth: []]
+      description: Get single estate with POI
+      produces: [application/json]
+      parameters:
+        - $ref: '#/definitions/id'
+      responses: [200]
+
+  /api/v1/tenant/estates/invite:
+    post:
+      tags: [estate-tenant]
+      security: [bearerAuth: []]
+      description: Accept buddy invite
+      produces: [application/json]
+      parameters:
+        - name: code
+          in: formData
+          type: string
+          required: true
+      responses: [200]
+
+  /api/v1/tenant/estates/{id}/like:
+    post:
+      tags: [estate-tenant]
+      security: [bearerAuth: []]
+      description: Like estate to add to own list
+      parameters:
+        - $ref: '#/definitions/id'
+      produces: [application/json]
+      responses: [200]
+
+    delete:
+      tags: [estate-tenant]
+      security: [bearerAuth: []]
+      description: Unlike estate
+      parameters:
+        - $ref: '#/definitions/id'
+      produces: [application/json]
+      responses: [200]
+
+  /api/v1/tenant/estates/{id}/dislike:
+    post:
+      tags: [estate-tenant]
+      security: [bearerAuth: []]
+      description: Add estate to dislike list
+      parameters:
+        - $ref: '#/definitions/id'
+      produces: [application/json]
+      responses: [200]
+
+    delete:
+      tags: [estate-tenant]
+      security: [bearerAuth: []]
+      description: Remove estate from dislike list
+      parameters:
+        - $ref: '#/definitions/id'
+      produces: [application/json]
+      responses: [200]

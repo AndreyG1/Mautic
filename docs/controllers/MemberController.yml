@@ -1,0 +1,387 @@
+definitions:
+  id:
+    name: id
+    in: path
+    type: number
+    required: true
+  income_id:
+    name: income_id
+    in: path
+    type: number
+    required: true
+  child:
+    name: child
+    in: formData
+    type: boolean
+    default: 'false'
+  firstname:
+    name: firstname
+    in: formData
+    type: string
+  secondname:
+    name: secondname
+    in: formData
+    type: string
+  phone:
+    name: phone
+    in: formData
+    type: string
+  birthday:
+    name: birthday
+    in: formData
+    type: date
+    example: '2020-04-04'
+  avatar:
+    name: avatar
+    in: formData
+    type: file
+  company_logo:
+    name: company_logo
+    in: formData
+    type: file
+  company:
+    name: company
+    in: formData
+    type: string
+  sex:
+    name: sex
+    in: formData
+    type: number
+    enum: ['1', '2']
+  profession:
+    name: profession
+    in: formData
+    type: string
+  position:
+    name: position
+    in: formData
+    type: string
+  hiring_date:
+    name: hiring_date
+    in: formData
+    #    type: date
+    type: string
+    pattern: '^\d{4}-\d{2}-\d{2}(\s\d{2}:\d{2}:\d{2})?$'
+    example: '2020-04-04'
+  employment_type:
+    name: employment_type
+    in: formData
+    type: string
+    enum: ['full', 'part']
+  income_type:
+    name: income_type
+    in: formData
+    type: string
+    enum: ['employee', 'unemployed', 'pension', 'self', 'student', 'private']
+  income:
+    name: income
+    in: formData
+    type: number
+  rent_arrears_doc:
+    name: rent_arrears_doc
+    in: formData
+    type: file
+  debt_proof:
+    name: debt_proof
+    in: formData
+    type: file
+  landlord_name:
+    name: landlord_name
+    in: formData
+    type: string
+  landlord_email:
+    name: landlord_email
+    in: formData
+    type: string
+  email:
+    name: email
+    in: formData
+    type: string
+  landlord_phone:
+    name: landlord_phone
+    in: formData
+    type: string
+  last_address:
+    name: last_address
+    in: formData
+    type: string
+  credit_score:
+    name: credit_score
+    in: formData
+    type: number
+    default: null
+  unpaid_rental:
+    name: unpaid_rental
+    in: formData
+    type: number
+    enum: ['1', '2', '3']
+  execution:
+    name: execution
+    in: formData
+    type: number
+    enum: ['1', '2', '3']
+  insolvency_proceed:
+    name: insolvency_proceed
+    in: formData
+    type: number
+    enum: ['1', '2', '3']
+  arrest_warranty:
+    name: arrest_warranty
+    in: formData
+    type: number
+    enum: ['1', '2', '3']
+  clean_procedure:
+    name: clean_procedure
+    in: formData
+    type: number
+    enum: ['1', '2', '3']
+  income_seizure:
+    name: income_seizure
+    in: formData
+    type: number
+    enum: ['1', '2', '3']
+  duties_amount:
+    name: duties_amount
+    in: formData
+    type: number
+  external_duties:
+    name: external_duties
+    in: formData
+    schema:
+      type: array
+      items:
+        type: number
+    explode: true
+    default: '[1, 2]'
+  file:
+    name: file
+    in: formData
+    type: file
+    required: true
+  expire_date:
+    name: expire_date
+    in: formData
+    type: date
+    required: true
+    description: 'Date like: 2020-04-XX'
+  work_exp:
+    name: work_exp
+    in: formData
+    type: number
+  field:
+    name: field
+    in: path
+    enum: ['rent_arrears_doc', 'debt_proof']
+    type: string
+    require: true
+  inviteCode:
+    name: code
+    in: formData
+    type: string
+  visibilityToOther:  
+    name: visibility_to_other
+    in: formData
+    type: string
+# Routes list
+/api/v1/tenant/members:
+  get:
+    tags: [members]
+    security: [bearerAuth: []]
+    description: Get user family members
+    produces: [application/json]
+    responses: [200]
+
+  post:
+    tags: [members]
+    security: [bearerAuth: []]
+    description: Get user family members
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/child'
+      - $ref: '#/definitions/firstname'
+      - $ref: '#/definitions/secondname'
+      - $ref: '#/definitions/phone'
+      - $ref: '#/definitions/email'
+      - $ref: '#/definitions/birthday'
+      - $ref: '#/definitions/avatar'
+      - $ref: '#/definitions/sex'
+      - $ref: '#/definitions/rent_arrears_doc'
+      - $ref: '#/definitions/debt_proof'
+      - $ref: '#/definitions/landlord_name'
+      - $ref: '#/definitions/landlord_email'
+      - $ref: '#/definitions/landlord_phone'
+      - $ref: '#/definitions/last_address'
+      - $ref: '#/definitions/credit_score'
+      - $ref: '#/definitions/unpaid_rental'
+      - $ref: '#/definitions/execution'
+      - $ref: '#/definitions/insolvency_proceed'
+      - $ref: '#/definitions/arrest_warranty'
+      - $ref: '#/definitions/clean_procedure'
+      - $ref: '#/definitions/income_seizure'
+      - $ref: '#/definitions/duties_amount'
+      - $ref: '#/definitions/rent_arrears_doc'
+      - $ref: '#/definitions/debt_proof'
+      - $ref: '#/definitions/external_duties'
+    responses: [200]
+
+/api/v1/tenant/members/{id}:
+  put:
+    tags: [members]
+    security: [bearerAuth: []]
+    description: Update member
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/id'
+      - $ref: '#/definitions/child'
+      - $ref: '#/definitions/firstname'
+      - $ref: '#/definitions/secondname'
+      - $ref: '#/definitions/phone'
+      - $ref: '#/definitions/email'
+      - $ref: '#/definitions/birthday'
+      - $ref: '#/definitions/avatar'
+      - $ref: '#/definitions/sex'
+      - $ref: '#/definitions/rent_arrears_doc'
+      - $ref: '#/definitions/debt_proof'
+      - $ref: '#/definitions/landlord_name'
+      - $ref: '#/definitions/landlord_email'
+      - $ref: '#/definitions/landlord_phone'
+      - $ref: '#/definitions/last_address'
+      - $ref: '#/definitions/credit_score'
+      - $ref: '#/definitions/unpaid_rental'
+      - $ref: '#/definitions/execution'
+      - $ref: '#/definitions/insolvency_proceed'
+      - $ref: '#/definitions/arrest_warranty'
+      - $ref: '#/definitions/clean_procedure'
+      - $ref: '#/definitions/income_seizure'
+      - $ref: '#/definitions/duties_amount'
+      - $ref: '#/definitions/external_duties'
+    responses: [200]
+
+  delete:
+    tags: [members]
+    security: [bearerAuth: []]
+    description: Remove member
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/id'
+    responses: [200]
+
+/api/v1/tenant/members/{id}/{field}:
+  delete:
+    tags: [members]
+    security: [bearerAuth: []]
+    description: Remove member docs
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/id'
+      - $ref: '#/definitions/field'
+    responses: [200]
+
+/api/v1/tenant/members/{id}/income:
+  post:
+    tags: [members]
+    security: [bearerAuth: []]
+    description: Get user family members
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/id'
+      - $ref: '#/definitions/company_logo'
+      - $ref: '#/definitions/company'
+      - $ref: '#/definitions/profession'
+      - $ref: '#/definitions/position'
+      - $ref: '#/definitions/employment_type'
+      - $ref: '#/definitions/work_exp'
+      - name: income_type
+        allOf: [$ref: '#/definitions/income_type', required: true]
+      - name: hiring_date
+        allOf: [$ref: '#/definitions/hiring_date', required: true]
+      - name: income
+        allOf: [$ref: '#/definitions/income', required: true]
+    responses: [200]
+
+/api/v1/tenant/members/{id}/income/{income_id}:
+  put:
+    tags: [members]
+    security: [bearerAuth: []]
+    description: Get user family members
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/id'
+      - $ref: '#/definitions/income_id'
+      - $ref: '#/definitions/company_logo'
+      - $ref: '#/definitions/company'
+      - $ref: '#/definitions/profession'
+      - $ref: '#/definitions/position'
+      - $ref: '#/definitions/employment_type'
+      - $ref: '#/definitions/income_type'
+      - $ref: '#/definitions/hiring_date'
+      - $ref: '#/definitions/work_exp'
+      - $ref: '#/definitions/income'
+    responses: [200]
+  delete:
+    tags: [members]
+    security: [bearerAuth: []]
+    description: Remove member
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/id'
+      - $ref: '#/definitions/income_id'
+    responses: [200]
+
+/api/v1/tenant/income/{income_id}/proof:
+  post:
+    tags: [members]
+    security: [bearerAuth: []]
+    description: Add income proof file
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/income_id'
+      - $ref: '#/definitions/file'
+      - $ref: '#/definitions/expire_date'
+
+    responses: [200]
+
+/api/v1/tenant/income/{income_id}/proof/{id}:
+  delete:
+    tags: [members]
+    security: [bearerAuth: []]
+    description: Remove member
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/id'
+      - $ref: '#/definitions/income_id'
+    responses: [200]
+
+/api/v1/tenant/members/invite/:id:
+  post:
+    tags: [members]
+    security: [bearerAuth: []]
+    description: Send invitation code
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/id'
+
+    responses: [200]
+
+/api/v1/tenant/members/confirmInvite:
+  post:
+    tags: [members]
+    security: [bearerAuth: []]
+    description: Confirm invite
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/inviteCode'
+      - $ref: '#/definitions/email'
+
+    responses: [200]
+/api/v1/tenant/members/email:
+  post:
+    tags: [members]
+    security: [bearerAuth: []]
+    description: Add member by email to send invitation code. In the meantime you can let this member see your profile passing visibility_to_other=3
+    produces: [application/json]
+    parameters:
+      - $ref: '#/definitions/visibilityToOther'
+      - $ref: '#/definitions/email'
+
+    responses: [200]

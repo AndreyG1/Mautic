@@ -1,0 +1,824 @@
+definitions:
+  estate_id:
+    name: estate_id
+    in: path
+    type: number
+    required: true
+  property_id:
+    name: property_id
+    in: formData
+    type: string
+    default: 'IDDQD'
+  property_type:
+    name: property_type
+    in: formData
+    type: string
+    enum: [1, 2, 3, 4]
+    default: '1'
+  coord:
+    name: coord
+    in: formData
+    type: string
+    default: '52.5204748,13.4122866'
+  apt_type_2:
+    name: apt_type
+    in: formData
+    type: number
+    exapmle: '1'
+    enum: [1, 2, 3, 4, 5, 6, 7, 8]
+  house_type_2:
+    name: house_type
+    in: formData
+    type: number
+    exapmle: '1'
+    enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  description:
+    name: description
+    in: formData
+    type: string
+  category:
+    name: category
+    in: formData
+    type: string
+  rooms:
+    name: rooms
+    in: formData
+    type: json
+  street:
+    name: street
+    in: formData
+    type: string
+  house_number:
+    name: house_number
+    in: formData
+    type: string
+  country:
+    name: country
+    in: formData
+    type: string
+  floor:
+    name: floor
+    in: formData
+    default: '1'
+    type: number
+  number_floors:
+    name: number_floors
+    in: formData
+    default: '1'
+    type: number
+  prices:
+    name: prices
+    in: formData
+    default: '1000'
+    type: number
+  net_rent:
+    name: net_rent
+    in: formData
+    default: '1000'
+    type: number
+  cold_rent:
+    name: cold_rent
+    in: formData
+    default: '1000'
+    type: number
+  rent_including_heating:
+    name: rent_including_heating
+    in: formData
+    default: '1000'
+    type: number
+  additional_costs:
+    name: additional_costs
+    in: formData
+    default: '1000'
+    type: number
+  heating_costs_included:
+    name: heating_costs_included
+    in: formData
+    default: '1000'
+    type: number
+  heating_costs:
+    name: heating_costs
+    in: formData
+    default: '1000'
+    type: number
+  rent_per_sqm:
+    name: rent_per_sqm
+    in: formData
+    default: '10'
+    type: number
+  deposit:
+    name: deposit
+    in: formData
+    default: '3000'
+    type: number
+  stp_garage:
+    name: stp_garage
+    in: formData
+    default: '0'
+    type: number
+  stp_parkhaus:
+    name: stp_parkhaus
+    in: formData
+    default: '0'
+    type: number
+  stp_tiefgarage:
+    name: stp_tiefgarage
+    in: formData
+    default: '0'
+    type: number
+  currency:
+    name: currency
+    in: formData
+    enum: ['EUR', 'DEM', 'USD', 'UAH']
+    type: string
+  area:
+    name: area
+    in: formData
+    default: '100'
+    type: number
+  living_space:
+    name: living_space
+    in: formData
+    default: '50'
+    type: number
+  usable_area:
+    name: usable_area
+    in: formData
+    default: '30'
+    type: number
+  rooms_number:
+    name: rooms_number
+    in: formData
+    default: '3'
+    type: number
+  bedrooms_number:
+    name: bedrooms_number
+    in: formData
+    default: '2'
+    type: number
+  bathrooms_number:
+    name: bathrooms_number
+    in: formData
+    default: '2'
+    type: number
+  kitchen_options:
+    name: kitchen_options
+    in: formData
+    default: '[1, 2]'
+    schema:
+      type: array
+      items:
+        type: number
+    explode: true
+  bath_options:
+    name: bath_options
+    in: formData
+    schema:
+      type: array
+      items:
+        type: number
+    explode: true
+    default: '[1, 2]'
+  wc_number:
+    name: wc_number
+    in: formData
+    default: '1'
+    type: number
+  balconies_number:
+    name: balconies_number
+    in: formData
+    default: '1'
+    type: number
+  terraces_number:
+    name: terraces_number
+    in: formData
+    default: '1'
+    type: number
+  occupancy:
+    name: occupancy
+    in: formData
+    type: number
+    enum: [1, 2, 3, 4, 5, 6]
+    default: '1'
+  use_type:
+    name: use_type
+    in: formData
+    type: number
+    enum: [1, 2, 3, 4]
+    default: '1'
+  ownership_type:
+    name: ownership_type
+    in: formData
+    type: number
+    enum: [1, 2, 3, 4]
+    default: '1'
+  marketing_type:
+    name: marketing_type
+    in: formData
+    type: number
+    enum: [1, 2, 3, 4]
+    default: '1'
+  energy_type:
+    name: energy_type
+    in: formData
+    type: number
+    enum: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    default: '1'
+  avail_duration:
+    name: avail_duration
+    in: formData
+    type: number
+    default: 72
+  vacant_date:
+    name: vacant_date
+    in: formData
+    type: date
+    default: '2020-06-20 20:00:00'
+  from_date:
+    name: from_date
+    in: formData
+    type: date
+    default: '2020-04-04'
+  to_date:
+    name: to_date
+    in: formData
+    type: date
+    default: '2020-04-04'
+  min_lease_duration:
+    name: min_lease_duration
+    in: formData
+    default: '1'
+    type: number
+  max_lease_duration:
+    name: max_lease_duration
+    in: formData
+    default: '12'
+    type: number
+  non_smoker:
+    name: non_smoker
+    in: formData
+    default: 'false'
+    type: boolean
+  pets:
+    name: pets
+    in: formData
+    type: number
+  gender:
+    name: gender
+    in: formData
+    type: number
+    enum: [1, 2, 3]
+    default: '1'
+  monumental_protection:
+    name: monumental_protection
+    in: formData
+    default: 'false'
+    type: boolean
+  parking_space:
+    name: parking_space
+    in: formData
+    type: number
+  parking_space_type:
+    name: parking_space_type
+    in: formData
+    type: number
+    enum: [1, 2, 3, 4, 5, 6]
+    default: '1'
+  construction_year:
+    name: construction_year
+    in: formData
+    type: date
+    default: '2000-01-01'
+  last_modernization:
+    name: last_modernization
+    in: formData
+    type: date
+    default: '2000-01-01'
+  building_status:
+    name: building_status
+    in: formData
+    type: number
+    enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    default: '1'
+  building_age:
+    name: building_age
+    in: formData
+    type: number
+    default: '20'
+  firing:
+    name: firing
+    in: formData
+    type: number
+    enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+    default: '1'
+  heating_type:
+    name: heating_type
+    in: formData
+    type: number
+    enum: [1, 2, 3, 4]
+    default: '1'
+  equipment:
+    name: equipment
+    in: formData
+    schema:
+      type: array
+      items:
+        type: number
+    explode: true
+    default: '[1, 2]'
+  equipment_standard:
+    name: equipment_standard
+    in: formData
+    type: number
+    enum: [1, 2, 3]
+    default: '1'
+  ground:
+    name: ground
+    in: formData
+    type: number
+    enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+    default: '1'
+  energy_efficiency:
+    name: energy_efficiency
+    in: formData
+    type: number
+    enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+    default: '1'
+  energy_pass:
+    name: energy_pass
+    type: json
+    default: '{"test": 1 }'
+  limit:
+    name: limit
+    in: query
+    type: number
+    default: '20'
+  page:
+    name: page
+    in: query
+    type: number
+    default: '1'
+  repair_need:
+    name: repair_need
+    in: formData
+    default: 'false'
+    type: boolean
+  cover:
+    name: cover
+    in: formData
+    type: string
+  city:
+    name: city
+    in: formData
+    type: string
+    default: 'berlin'
+  zip:
+    name: zip
+    in: formData
+    type: string
+    default: '29000'
+  budget:
+    name: budget
+    in: formData
+    type: number
+    default: 25
+  credit_score:
+    name: credit_score
+    in: formData
+    type: number
+    default: 96
+  rent_arrears:
+    name: rent_arrears
+    in: formData
+    default: 'false'
+    type: boolean
+  full_address:
+    name: full_address
+    in: formData
+    default: 'false'
+    type: boolean
+  kids_type:
+    name: kids_class
+    in: formData
+    type: number
+    default: '1'
+  photo_require:
+    name: photo_require
+    in: formData
+    default: 'false'
+    type: boolean
+  furnished:
+    name: furnished
+    in: formData
+    default: 'false'
+    type: boolean
+  source_person:
+    name: source_person
+    in: formData
+    type: number
+    default: '1'
+  family_status:
+    name: family_status
+    in: formData
+    type: number
+    enum: [1, 2, 3]
+  apt_options:
+    name: options
+    in: formData
+    default: '[1, 2]'
+    schema:
+      type: array
+      items:
+        type: number
+    explode: true
+    example: '[1, 2]'
+  min_age:
+    name: min_age
+    in: formData
+    type: number
+  max_age:
+    name: max_age
+    in: formData
+    type: number
+  #  week_day:
+  #    name: week_day
+  #    in: formData
+  #    type: number
+  #    enum: [1, 2, 3, 4, 5, 6, 7]
+  slot_length:
+    name: slot_length
+    in: formData
+    type: number
+    enum: [5, 10, 15]
+  start_at:
+    name: start_at
+    in: formData
+    type: string
+    format: date-time
+    example: '2020-06-20 02:00:00'
+  end_at:
+    name: end_at
+    in: formData
+    type: string
+    format: date-time
+    example: '2020-06-20 23:00:00'
+  slot_id:
+    name: slot_id
+    in: path
+    type: number
+    required: true
+
+paths:
+  /api/v1/estates:
+    get:
+      tags: [estate]
+      security: [bearerAuth: []]
+      description: Get own estates list
+      produces: [application/json]
+      parameters:
+        - filters:
+          name: query
+          in: query
+          type: string
+        - status:
+          name: status
+          type: number
+          in: query
+          description: 'Active: 1, Draft: 5'
+          enum: ['1', '5']
+        - $ref: '#/definitions/limit'
+        - $ref: '#/definitions/page'
+      responses: [200]
+
+    post:
+      tags: [estate]
+      security: [bearerAuth: []]
+      description: Create new estate
+      produces: [application/json]
+      parameters:
+        - $ref: '#/definitions/property_id'
+        - $ref: '#/definitions/property_type'
+        - $ref: '#/definitions/coord'
+        - $ref: '#/definitions/apt_type_2'
+        - $ref: '#/definitions/house_type_2'
+        - $ref: '#/definitions/description'
+        - $ref: '#/definitions/category'
+        - $ref: '#/definitions/rooms'
+        - $ref: '#/definitions/street'
+        - $ref: '#/definitions/house_number'
+        - $ref: '#/definitions/country'
+        - $ref: '#/definitions/floor'
+        - $ref: '#/definitions/number_floors'
+        - $ref: '#/definitions/prices'
+        - $ref: '#/definitions/net_rent'
+        - $ref: '#/definitions/cold_rent'
+        - $ref: '#/definitions/rent_including_heating'
+        - $ref: '#/definitions/additional_costs'
+        - $ref: '#/definitions/heating_costs_included'
+        - $ref: '#/definitions/heating_costs'
+        - $ref: '#/definitions/rent_per_sqm'
+        - $ref: '#/definitions/deposit'
+        - $ref: '#/definitions/stp_garage'
+        - $ref: '#/definitions/stp_parkhaus'
+        - $ref: '#/definitions/stp_tiefgarage'
+        - $ref: '#/definitions/currency'
+        - $ref: '#/definitions/area'
+        - $ref: '#/definitions/living_space'
+        - $ref: '#/definitions/usable_area'
+        - $ref: '#/definitions/rooms_number'
+        - $ref: '#/definitions/bedrooms_number'
+        - $ref: '#/definitions/bathrooms_number'
+        - $ref: '#/definitions/kitchen_options'
+        - $ref: '#/definitions/bath_options'
+        - $ref: '#/definitions/wc_number'
+        - $ref: '#/definitions/balconies_number'
+        - $ref: '#/definitions/terraces_number'
+        - $ref: '#/definitions/occupancy'
+        - $ref: '#/definitions/use_type'
+        - $ref: '#/definitions/ownership_type'
+        - $ref: '#/definitions/marketing_type'
+        - $ref: '#/definitions/energy_type'
+        - $ref: '#/definitions/avail_duration'
+        - $ref: '#/definitions/vacant_date'
+        - $ref: '#/definitions/from_date'
+        - $ref: '#/definitions/to_date'
+        - $ref: '#/definitions/min_lease_duration'
+        - $ref: '#/definitions/max_lease_duration'
+        - $ref: '#/definitions/non_smoker'
+        - $ref: '#/definitions/pets'
+        - $ref: '#/definitions/gender'
+        - $ref: '#/definitions/monumental_protection'
+        - $ref: '#/definitions/parking_space_type'
+        - $ref: '#/definitions/parking_space'
+        - $ref: '#/definitions/construction_year'
+        - $ref: '#/definitions/last_modernization'
+        - $ref: '#/definitions/building_status'
+        - $ref: '#/definitions/building_age'
+        - $ref: '#/definitions/firing'
+        - $ref: '#/definitions/heating_type'
+        - $ref: '#/definitions/equipment'
+        - $ref: '#/definitions/equipment_standard'
+        - $ref: '#/definitions/ground'
+        - $ref: '#/definitions/energy_efficiency'
+        - $ref: '#/definitions/repair_need'
+        - $ref: '#/definitions/cover'
+        - $ref: '#/definitions/city'
+        - $ref: '#/definitions/zip'
+        - $ref: '#/definitions/budget'
+        - $ref: '#/definitions/credit_score'
+        - $ref: '#/definitions/rent_arrears'
+        - $ref: '#/definitions/full_address'
+        - $ref: '#/definitions/kids_type'
+        - $ref: '#/definitions/photo_require'
+        - $ref: '#/definitions/furnished'
+        - $ref: '#/definitions/source_person'
+        - $ref: '#/definitions/family_status'
+        - $ref: '#/definitions/apt_options'
+        - $ref: '#/definitions/min_age'
+        - $ref: '#/definitions/max_age'
+      responses: [200]
+
+  /api/v1/estates/{id}:
+    get:
+      tags: [estate]
+      security: [bearerAuth: []]
+      description: Get single estate with POI
+      produces: [application/json]
+      parameters:
+        - id:
+          name: id
+          in: path
+          type: number
+          default: '1'
+          required: true
+      responses: [200]
+
+    put:
+      tags: [estate]
+      security: [bearerAuth: []]
+      description: update existing estate
+      produces: [application/json]
+      parameters:
+        - id:
+          name: id
+          in: path
+          type: number
+          default: '1'
+          required: true
+        - $ref: '#/definitions/property_id'
+        - $ref: '#/definitions/property_type'
+        - $ref: '#/definitions/coord'
+        - $ref: '#/definitions/apt_type_2'
+        - $ref: '#/definitions/house_type_2'
+        - $ref: '#/definitions/description'
+        - $ref: '#/definitions/category'
+        - $ref: '#/definitions/rooms'
+        - $ref: '#/definitions/street'
+        - $ref: '#/definitions/house_number'
+        - $ref: '#/definitions/country'
+        - $ref: '#/definitions/floor'
+        - $ref: '#/definitions/number_floors'
+        - $ref: '#/definitions/prices'
+        - $ref: '#/definitions/net_rent'
+        - $ref: '#/definitions/cold_rent'
+        - $ref: '#/definitions/rent_including_heating'
+        - $ref: '#/definitions/additional_costs'
+        - $ref: '#/definitions/heating_costs_included'
+        - $ref: '#/definitions/heating_costs'
+        - $ref: '#/definitions/rent_per_sqm'
+        - $ref: '#/definitions/deposit'
+        - $ref: '#/definitions/stp_garage'
+        - $ref: '#/definitions/stp_parkhaus'
+        - $ref: '#/definitions/stp_tiefgarage'
+        - $ref: '#/definitions/currency'
+        - $ref: '#/definitions/area'
+        - $ref: '#/definitions/living_space'
+        - $ref: '#/definitions/usable_area'
+        - $ref: '#/definitions/rooms_number'
+        - $ref: '#/definitions/bedrooms_number'
+        - $ref: '#/definitions/bathrooms_number'
+        - $ref: '#/definitions/kitchen_options'
+        - $ref: '#/definitions/bath_options'
+        - $ref: '#/definitions/wc_number'
+        - $ref: '#/definitions/balconies_number'
+        - $ref: '#/definitions/terraces_number'
+        - $ref: '#/definitions/occupancy'
+        - $ref: '#/definitions/use_type'
+        - $ref: '#/definitions/ownership_type'
+        - $ref: '#/definitions/marketing_type'
+        - $ref: '#/definitions/energy_type'
+        - $ref: '#/definitions/avail_duration'
+        - $ref: '#/definitions/vacant_date'
+        - $ref: '#/definitions/from_date'
+        - $ref: '#/definitions/to_date'
+        - $ref: '#/definitions/min_lease_duration'
+        - $ref: '#/definitions/max_lease_duration'
+        - $ref: '#/definitions/non_smoker'
+        - $ref: '#/definitions/pets'
+        - $ref: '#/definitions/gender'
+        - $ref: '#/definitions/monumental_protection'
+        - $ref: '#/definitions/parking_space_type'
+        - $ref: '#/definitions/parking_space'
+        - $ref: '#/definitions/construction_year'
+        - $ref: '#/definitions/last_modernization'
+        - $ref: '#/definitions/building_status'
+        - $ref: '#/definitions/building_age'
+        - $ref: '#/definitions/firing'
+        - $ref: '#/definitions/heating_type'
+        - $ref: '#/definitions/equipment'
+        - $ref: '#/definitions/equipment_standard'
+        - $ref: '#/definitions/ground'
+        - $ref: '#/definitions/energy_efficiency'
+        - $ref: '#/definitions/energy_pass'
+        - $ref: '#/definitions/repair_need'
+        - $ref: '#/definitions/cover'
+        - $ref: '#/definitions/city'
+        - $ref: '#/definitions/zip'
+        - $ref: '#/definitions/budget'
+        - $ref: '#/definitions/credit_score'
+        - $ref: '#/definitions/rent_arrears'
+        - $ref: '#/definitions/full_address'
+        - $ref: '#/definitions/kids_type'
+        - $ref: '#/definitions/photo_require'
+        - $ref: '#/definitions/furnished'
+        - $ref: '#/definitions/source_person'
+        - $ref: '#/definitions/family_status'
+        - $ref: '#/definitions/apt_options'
+        - $ref: '#/definitions/min_age'
+        - $ref: '#/definitions/max_age'
+      responses: [200]
+
+    delete:
+      tags: [estate]
+      security: [bearerAuth: []]
+      description: update existing estate
+      produces: [application/json]
+      parameters:
+        - id:
+          name: id
+          in: path
+          type: number
+          required: true
+      responses: [200]
+
+  /api/v1/estates/{id}/publish:
+    put:
+      tags: [estate]
+      security: [bearerAuth: []]
+      produces: [application/json]
+      parameters:
+        - id:
+          name: id
+          in: path
+          type: number
+          default: '1'
+          required: true
+        - action:
+          name: action
+          in: formData
+          type: string
+          enum: ['publish', 'unpublish']
+          default: 'publish'
+          required: true
+      responses: [200]
+
+  /api/v1/estates/{estate_id}/files:
+    post:
+      tags: [estate]
+      security: [bearerAuth: []]
+      description: update existing estate
+      produces: [application/json]
+      parameters:
+        - $ref: '#/definitions/estate_id'
+        - name: type
+          in: formData
+          type: string
+          enum: ['plan', 'doc', 'image']
+          required: true
+        - name: file
+          in: formData
+          type: file
+          required: true
+      responses: [200]
+
+  /api/v1/estates/{estate_id}/files/{id}:
+    delete:
+      tags: [estate]
+      security: [bearerAuth: []]
+      description: delete existing estate file
+      produces: [application/json]
+      parameters:
+        - $ref: '#/definitions/estate_id'
+        - $ref: '#/definitions/id'
+
+  /api/v1/estates/import:
+    post:
+      tags: [estate]
+      security: [bearerAuth: []]
+      description: update existing estate
+      produces: [application/json]
+      parameters:
+        - name: file
+          in: formData
+          type: file
+          required: true
+      responses: [200]
+
+  /api/v1/estates/{estate_id}/slots:
+    get:
+      tags: [estate, timeslot]
+      security: [bearerAuth: []]
+      description: Get etstate timeslots
+      produces: [application/json]
+      parameters:
+        - $ref: '#/definitions/estate_id'
+      responses: [200]
+
+    post:
+      tags: [estate, timeslot]
+      security: [bearerAuth: []]
+      description: Create new estate
+      produces: [application/json]
+      parameters:
+        - $ref: '#/definitions/estate_id'
+        - name: slot_length
+          allOf: [$ref: '#/definitions/slot_length', required: true]
+        - name: start_at
+          allOf: [$ref: '#/definitions/start_at', required: true]
+        - name: end_at
+          allOf: [$ref: '#/definitions/end_at', required: true]
+      responses: [200]
+
+  /api/v1/estates/{estate_id}/slots/{slot_id}:
+    put:
+      tags: [estate, timeslot]
+      security: [bearerAuth: []]
+      description: Create new estate
+      produces: [application/json]
+      parameters:
+        - $ref: '#/definitions/estate_id'
+        - $ref: '#/definitions/slot_id'
+        - $ref: '#/definitions/slot_length'
+        - $ref: '#/definitions/start_at'
+        - $ref: '#/definitions/end_at'
+      responses: [200]
+
+    delete:
+      tags: [estate, timeslot]
+      security: [bearerAuth: []]
+      description: Delete existing slot
+      produces: [application/json]
+      parameters:
+        - $ref: '#/definitions/estate_id'
+        - $ref: '#/definitions/slot_id'
+      responses: [200]
+
+  /api/v1/estates/{estate_id}/slots/free:
+    get:
+      tags: [estate, timeslot]
+      security: [bearerAuth: []]
+      description: Get free for booking timeslots
+      produces: [application/json]
+      parameters:
+        - $ref: '#/definitions/estate_id'
+      responses: [200]
